@@ -27,5 +27,3 @@ Error: "no such file or directory" saat build web3, dan error "unable to prepare
 2. Mengubah isi `web3/Dockerfile` menjadi `FROM php:8.2-apache`.
 
 ---
-
-... (lanjutkan untuk semua permasalahan yang kamu temukan)
