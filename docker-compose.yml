@@ -12,6 +12,7 @@ services:   # <-- TAMBAHKAN TITIK DUA (:) SETELAH 'services'
       - web3
     networks:
       - frontend
+      - backend   # <-- TAMBAHKAN INI
 
   web1:
     build: ./web1
