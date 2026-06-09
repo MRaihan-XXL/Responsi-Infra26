@@ -1,5 +1,4 @@
-```sql
-CREATE TABLE students (
+CREATE TABLE IF NOT EXISTS students (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nim VARCHAR(20),
     nama VARCHAR(100)
@@ -10,4 +9,3 @@ VALUES (
     'REPLACE_NIM',
     'REPLACE_NAME'
 );
-```
