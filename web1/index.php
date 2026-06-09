@@ -8,7 +8,7 @@ $nim  = "H1H024056";  // Ganti dengan NIM kamu
 <!DOCTYPE html>
 <html>
 <head>
-    <strong>WEB-1</strong>
+    <title>Web 1</title>
 </head>
 <body>
 
