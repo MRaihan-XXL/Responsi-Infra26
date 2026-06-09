@@ -1,7 +1,10 @@
 FROM php:8.2-apache
 
+# Install mysqli extension
+RUN docker-php-ext-install mysqli
+
 WORKDIR /var/www/html
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 80
