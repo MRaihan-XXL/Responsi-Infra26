@@ -1,6 +1,6 @@
 <?php
 $nama = "Raihan";        // Ganti dengan nama kamu
-$nim  = "12345678";      // Ganti dengan NIM kamu
+$nim  = "H1H024056";      // Ganti dengan NIM kamu
 
 // Koneksi ke database menggunakan environment variables
 $db_host = getenv('DB_HOST') ?: 'db';
