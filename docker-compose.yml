@@ -1,6 +1,4 @@
-version: "3.9"
-
-services:   # <-- TAMBAHKAN TITIK DUA (:) SETELAH 'services'
+services:
   nginx:
     build: ./nginx
     container_name: nginx-lb
@@ -12,7 +10,7 @@ services:   # <-- TAMBAHKAN TITIK DUA (:) SETELAH 'services'
       - web3
     networks:
       - frontend
-      - backend   # <-- TAMBAHKAN INI
+      - backend
 
   web1:
     build: ./web1
@@ -35,7 +33,7 @@ services:   # <-- TAMBAHKAN TITIK DUA (:) SETELAH 'services'
       DB_HOST: db
       DB_NAME: responsi
       DB_USER: student
-      DB_PASS: wrongpassword   # <-- INI SENGJA SALAH, jangan diubah!
+      DB_PASS: wrongpassword
     depends_on:
       - db
     networks:
@@ -43,7 +41,7 @@ services:   # <-- TAMBAHKAN TITIK DUA (:) SETELAH 'services'
       - backend
 
   web3:
-    build: ./web3   # <-- UBAH DARI './web33' KE './web3'
+    build: ./web3
     container_name: web3
     environment:
       DB_HOST: db
@@ -64,12 +62,12 @@ services:   # <-- TAMBAHKAN TITIK DUA (:) SETELAH 'services'
       MYSQL_USER: student
       MYSQL_PASSWORD: student123
     volumes:
-      - db-data:/var/lib/mysql   # <-- UBAH DARI 'database-data:' KE 'db-data:'
+      - db-data:/var/lib/mysql
     networks:
       - backend
 
 volumes:
-  db-data:   # <-- UBAH DARI 'database-data:' KE 'db-data:'
+  db-data:
 
 networks:
   frontend:
