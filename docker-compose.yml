@@ -1,10 +1,8 @@
 version: "3.9"
 
-services
-
+services:   # <-- TAMBAHKAN TITIK DUA (:) SETELAH 'services'
   nginx:
-    build:
-      context: ./nginx
+    build: ./nginx
     container_name: nginx-lb
     ports:
       - "8080:80"
@@ -16,8 +14,7 @@ services
       - frontend
 
   web1:
-    build:
-      context: ./web1
+    build: ./web1
     container_name: web1
     environment:
       DB_HOST: mysql
@@ -31,14 +28,13 @@ services
       - backend
 
   web2:
-    build:
-      context: ./web2
+    build: ./web2
     container_name: web2
     environment:
       DB_HOST: db
       DB_NAME: responsi
       DB_USER: student
-      DB_PASS: wrongpassword
+      DB_PASS: wrongpassword   # <-- INI SENGJA SALAH, jangan diubah!
     depends_on:
       - db
     networks:
@@ -46,8 +42,7 @@ services
       - backend
 
   web3:
-    build:
-      context: ./web3
+    build: ./web3   # <-- UBAH DARI './web33' KE './web3'
     container_name: web3
     environment:
       DB_HOST: db
@@ -60,8 +55,7 @@ services
       - backend
 
   db:
-    build:
-      context: ./db
+    build: ./db
     container_name: mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -69,12 +63,12 @@ services
       MYSQL_USER: student
       MYSQL_PASSWORD: student123
     volumes:
-      - db-data:/var/lib/mysql
+      - db-data:/var/lib/mysql   # <-- UBAH DARI 'database-data:' KE 'db-data:'
     networks:
       - backend
 
 volumes:
-  database-data:
+  db-data:   # <-- UBAH DARI 'database-data:' KE 'db-data:'
 
 networks:
   frontend:
