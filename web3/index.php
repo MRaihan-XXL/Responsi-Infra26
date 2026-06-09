@@ -1,8 +1,32 @@
 <?php
+$nama = "Raihan";        // Ganti dengan nama kamu
+$nim  = "12345678";      // Ganti dengan NIM kamu
 
-$nama = "Raihan";    // Ganti dengan nama kamu
-$nim  = "H1H024056";  // Ganti dengan NIM kamu
+// Koneksi ke database menggunakan environment variables
+$db_host = getenv('DB_HOST') ?: 'db';
+$db_name = getenv('DB_NAME') ?: 'responsi';
+$db_user = getenv('DB_USER') ?: 'student';
+$db_pass = getenv('DB_PASS') ?: 'student123';
 
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+// Cek koneksi
+if ($conn->connect_error) {
+    die("Koneksi database gagal: " . $conn->connect_error);
+}
+
+// Query data dari tabel students
+$sql = "SELECT nim, nama FROM students";
+$result = $conn->query($sql);
+$data = "";
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $data = $row['nim'] . " - " . $row['nama'];
+} else {
+    $data = "Belum ada data";
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +53,11 @@ NIM:
 <p>
 Container:
 <strong>WEB-3</strong>
+</p>
+
+<p>
+Data dari Database:
+<strong><?= $data ?></strong>
 </p>
 
 </body>
