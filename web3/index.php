@@ -1,8 +1,7 @@
 <?php
-$nama = "Raihan";        // Ganti dengan nama kamu
-$nim  = "H1H024056";      // Ganti dengan NIM kamu
+$nama = "Raihan";        // GANTI DENGAN NAMA KAMU
+$nim  = "H1H024056";      // GANTI DENGAN NIM KAMU
 
-// Koneksi ke database menggunakan environment variables
 $db_host = getenv('DB_HOST') ?: 'db';
 $db_name = getenv('DB_NAME') ?: 'responsi';
 $db_user = getenv('DB_USER') ?: 'student';
@@ -10,23 +9,19 @@ $db_pass = getenv('DB_PASS') ?: 'student123';
 
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
-// Cek koneksi
 if ($conn->connect_error) {
-    die("Koneksi database gagal: " . $conn->connect_error);
-}
-
-// Query data dari tabel students
-$sql = "SELECT nim, nama FROM students";
-$result = $conn->query($sql);
-$data = "";
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $data = $row['nim'] . " - " . $row['nama'];
+    $data = "Gagal koneksi DB: " . $conn->connect_error;
 } else {
-    $data = "Belum ada data";
+    $sql = "SELECT nim, nama FROM students";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $data = $row['nim'] . " - " . $row['nama'];
+    } else {
+        $data = "Belum ada data di database";
+    }
+    $conn->close();
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
